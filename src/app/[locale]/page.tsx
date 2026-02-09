@@ -88,7 +88,7 @@ export default function LocalePage() {
       setIsPlaying(false)
     } else {
       setIsPlaying(true)
-      pigSoundRef.current.speakWithOinks(outputText, () => setIsPlaying(false))
+      pigSoundRef.current.speakAsPig(outputText, () => setIsPlaying(false))
     }
   }
 
