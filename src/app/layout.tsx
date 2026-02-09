@@ -7,7 +7,7 @@ const siteUrl = 'https://piglatin.mrtranslator.app'
 export const metadata: Metadata = {
   title: 'Pig Latin Translator – Free Online Converter with Sound Effects',
   description: 'Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin or decode Pig Latin to English instantly. Play your translations with authentic oink effects.',
-  keywords: 'pig latin translator, pig latin converter, english to pig latin, pig latin decoder, pig latin generator, pig latin with sound, free pig latin tool, pig latin for kids',
+  keywords: 'pig latin translator, pig latin converter, english to pig latin, pig latin decoder, pig latin generator, pig latin with sound, free pig latin tool',
   verification: {
     google: 'd3B3MMKaKwk3jPu_BFy4j7ePJ1rfINIlt-mnKSRwCqA',
   },
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Pig Latin Translator 🐷 – Free with Sound Effects!',
-    description: 'Convert English to Pig Latin or decode Pig Latin to English. Hear your translations with fun oink sounds!',
+    title: 'Pig Latin Translator – Free Online Converter with Sound Effects',
+    description: 'Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin instantly.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pig Latin Translator 🐷',
-    description: 'Anslatetray ouryay exttay otay Igpay Atinlay! With authentic oink sounds.',
+    title: 'Pig Latin Translator',
+    description: 'Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin instantly.',
   },
   robots: 'index, follow',
 }
@@ -46,22 +46,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YY86GZ1G27"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YY86GZ1G27');
+          `}
+        </Script>
       </head>
       <body>
         {children}

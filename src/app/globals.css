@@ -4,31 +4,31 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 236, 72, 153;
-  --background-end-rgb: 239, 68, 68;
+  --background-start-rgb: 124, 58, 237;
+  --background-end-rgb: 236, 72, 153;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
 }
 
-/* Custom scrollbar - pink theme */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #fce7f3;
+  background: #f1f1f1;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f472b6;
+  background: #c084fc;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ec4899;
+  background: #a855f7;
 }
 
 /* Smooth animations */
@@ -38,7 +38,7 @@ body {
   transition-duration: 150ms;
 }
 
-/* Pig Latin output styling */
-.piglatin-output {
-  font-family: system-ui, -apple-system, sans-serif;
+/* Emoji styling */
+.emoji-output {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 }
