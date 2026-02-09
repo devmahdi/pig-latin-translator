@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { locales } from '@/lib/i18n'
 
-const siteUrl = 'https://emoji.mrtranslator.app'
+const siteUrl = 'https://piglatin.mrtranslator.app'
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale

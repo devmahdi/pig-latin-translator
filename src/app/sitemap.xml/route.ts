@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const SITE_URL = 'https://emoji.mrtranslator.app';
+const SITE_URL = 'https://piglatin.mrtranslator.app';
 const locales = ['en', 'es', 'fr', 'de', 'pt'];
 
 export const revalidate = 300;

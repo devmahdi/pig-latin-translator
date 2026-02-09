@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations, locales, localeNames, type Locale } from '@/lib/i18n'
 
-const siteUrl = 'https://emoji.mrtranslator.app'
+const siteUrl = 'https://piglatin.mrtranslator.app'
 
 type Props = {
   params: { locale: string }
