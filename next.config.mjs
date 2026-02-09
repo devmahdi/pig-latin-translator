@@ -11,8 +11,8 @@ const nextConfig = {
   
   // Environment variables that should be exposed to the browser
   env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://emoji-translator.com',
-    NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME || 'Emoji Translator',
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://piglatin.mrtranslator.app',
+    NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME || 'Pig Latin Translator',
   },
   
   // Headers for security and SEO

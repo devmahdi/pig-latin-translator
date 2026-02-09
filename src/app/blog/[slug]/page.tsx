@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: Props) {
     datePublished: post.publishedAt,
     author: {
       '@type': 'Person',
-      name: post.author ? `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() : 'Emoji Translator Team'
+      name: post.author ? `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() : 'Pig Latin Translator Team'
     }
   }
 
@@ -75,14 +75,13 @@ export default async function BlogPostPage({ params }: Props) {
         />
       )}
       
-      <main className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+      <main className="min-h-screen bg-gradient-to-br from-pink-500 via-rose-400 to-red-400">
         {/* Header */}
         <header className="bg-white/10 backdrop-blur-sm border-b border-white/20">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-white flex items-center gap-2">
-              <span className="text-3xl">😀</span>
+              <span className="text-3xl">🐷</span>
               <span>{t.header.title}</span>
-              <span className="text-white/70 font-normal">{t.header.subtitle}</span>
             </Link>
             <nav className="flex items-center gap-4">
               <Link href="/" className="text-white/90 hover:text-white transition-colors">
@@ -120,28 +119,12 @@ export default async function BlogPostPage({ params }: Props) {
                   <div className="flex items-center gap-4 text-sm text-gray-500">
                     <span>📅 {post.publishedAt.split('T')[0]}</span>
                     <span>⏱️ {post.readingTime} min read</span>
-                    {post.author && (
-                      <span>✍️ {post.author.firstName} {post.author.lastName}</span>
-                    )}
                   </div>
-                  {post.categories?.length > 0 && (
-                    <div className="flex gap-2 mt-4">
-                      {post.categories.map(cat => (
-                        <Link
-                          key={cat.id}
-                          href={`/blog/category/${cat.slug}`}
-                          className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm hover:bg-purple-200 transition-colors"
-                        >
-                          {cat.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </header>
 
                 {/* Content */}
                 <div
-                  className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-purple-600"
+                  className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-pink-600"
                   dangerouslySetInnerHTML={{ __html: contentHtml }}
                 />
 
@@ -156,7 +139,7 @@ export default async function BlogPostPage({ params }: Props) {
                         <details key={i} className="group">
                           <summary className="flex justify-between items-center cursor-pointer list-none p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
                             <span className="font-medium text-gray-800">{faq.question}</span>
-                            <span className="text-purple-500 group-open:rotate-180 transition-transform">▼</span>
+                            <span className="text-pink-500 group-open:rotate-180 transition-transform">▼</span>
                           </summary>
                           <div className="p-4 text-gray-600">{faq.answer}</div>
                         </details>
@@ -166,16 +149,16 @@ export default async function BlogPostPage({ params }: Props) {
                 )}
 
                 {/* CTA */}
-                <div className="mt-12 p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl text-center">
+                <div className="mt-12 p-6 bg-gradient-to-r from-pink-100 to-rose-100 rounded-xl text-center">
                   <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    Try Our Emoji Translator!
+                    {t.hero.title}
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    Convert text to emojis and emojis back to text instantly.
+                    {t.hero.description}
                   </p>
                   <Link
                     href="/"
-                    className="inline-block px-6 py-3 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-colors font-medium"
+                    className="inline-block px-6 py-3 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-colors font-medium"
                   >
                     Start Translating →
                   </Link>
@@ -191,22 +174,16 @@ export default async function BlogPostPage({ params }: Props) {
                       <Link
                         key={rp.id}
                         href={`/blog/${rp.slug}`}
-                        className="flex gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors"
+                        className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-xl transition-colors"
                       >
                         {rp.featuredImage?.url ? (
-                          <img
-                            src={rp.featuredImage.url}
-                            alt={rp.title}
-                            className="w-20 h-20 object-cover rounded-lg"
-                          />
+                          <img src={rp.featuredImage.url} alt="" className="w-16 h-16 object-cover rounded-lg" />
                         ) : (
-                          <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg flex items-center justify-center text-2xl">
-                            😀
-                          </div>
+                          <div className="w-16 h-16 bg-pink-100 rounded-lg flex items-center justify-center text-2xl">🐷</div>
                         )}
                         <div>
-                          <h4 className="font-medium text-gray-800 hover:text-purple-600">{rp.title}</h4>
-                          <p className="text-sm text-gray-500 line-clamp-2">{rp.excerpt}</p>
+                          <h4 className="font-medium text-gray-800 hover:text-pink-600">{rp.title}</h4>
+                          <p className="text-sm text-gray-500">{rp.readingTime} min read</p>
                         </div>
                       </Link>
                     ))}
@@ -218,14 +195,14 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Sidebar TOC */}
             {toc.length > 0 && (
               <aside className="hidden lg:block w-64 flex-shrink-0">
-                <div className="sticky top-8 bg-white rounded-2xl p-4">
-                  <h3 className="font-bold text-gray-800 mb-4">Table of Contents</h3>
+                <div className="sticky top-8 bg-white rounded-2xl p-6 shadow-lg">
+                  <h4 className="font-bold text-gray-800 mb-4">Table of Contents</h4>
                   <nav className="space-y-2">
-                    {toc.map((item) => (
+                    {toc.map((item, i) => (
                       <a
-                        key={item.id}
+                        key={i}
                         href={`#${item.id}`}
-                        className={`block text-sm text-gray-600 hover:text-purple-600 transition-colors ${
+                        className={`block text-sm text-gray-600 hover:text-pink-600 transition-colors ${
                           item.level === 3 ? 'pl-4' : ''
                         }`}
                       >

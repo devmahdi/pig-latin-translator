@@ -17,14 +17,13 @@ export default async function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+    <main className="min-h-screen bg-gradient-to-br from-pink-500 via-rose-400 to-red-400">
       {/* Header */}
       <header className="bg-white/10 backdrop-blur-sm border-b border-white/20">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-white flex items-center gap-2">
-            <span className="text-3xl">😀</span>
+            <span className="text-3xl">🐷</span>
             <span>{t.header.title}</span>
-            <span className="text-white/70 font-normal">{t.header.subtitle}</span>
           </Link>
           <nav className="flex items-center gap-4">
             <Link href="/" className="text-white/90 hover:text-white transition-colors">
@@ -44,7 +43,7 @@ export default async function BlogPage() {
             📝 {t.footer.blog}
           </h1>
           <p className="text-white/90 text-lg">
-            Learn about emojis, their history, and how to use them effectively
+            Learn about Pig Latin, language games, and fun ways to communicate
           </p>
         </div>
 
@@ -65,12 +64,12 @@ export default async function BlogPage() {
                       className="w-24 h-24 object-cover rounded-xl"
                     />
                   ) : (
-                    <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center text-4xl">
-                      😀
+                    <div className="w-24 h-24 bg-gradient-to-br from-pink-100 to-rose-100 rounded-xl flex items-center justify-center text-4xl">
+                      🐷
                     </div>
                   )}
                   <div className="flex-1">
-                    <h2 className="text-xl font-bold text-gray-800 mb-2 hover:text-purple-600 transition-colors">
+                    <h2 className="text-xl font-bold text-gray-800 mb-2 hover:text-pink-600 transition-colors">
                       {post.title}
                     </h2>
                     <p className="text-gray-600 mb-3 line-clamp-2">{post.excerpt}</p>
@@ -85,7 +84,7 @@ export default async function BlogPage() {
           </div>
         ) : (
           <div className="bg-white rounded-2xl p-12 text-center">
-            <div className="text-6xl mb-4">📝</div>
+            <div className="text-6xl mb-4">🐷</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">No posts yet</h2>
             <p className="text-gray-600">Blog posts will appear here once published.</p>
           </div>
