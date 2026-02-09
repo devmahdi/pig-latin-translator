@@ -5,9 +5,9 @@ import './globals.css'
 const siteUrl = 'https://piglatin.mrtranslator.app'
 
 export const metadata: Metadata = {
-  title: 'Pig Latin Translator – Free Online Converter with Sound Effects',
-  description: 'Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin or decode Pig Latin to English instantly. Play your translations with authentic oink effects.',
-  keywords: 'pig latin translator, pig latin converter, english to pig latin, pig latin decoder, pig latin generator, pig latin with sound, free pig latin tool',
+  title: 'Pig Latin Translator – Free Online Converter',
+  description: 'Free online Pig Latin translator. Convert English to Pig Latin or decode Pig Latin to English instantly. A classic language game used for fun and education.',
+  keywords: 'pig latin translator, pig latin converter, english to pig latin, pig latin decoder, pig latin generator, language game, word game, free translator',
   verification: {
     google: 'd3B3MMKaKwk3jPu_BFy4j7ePJ1rfINIlt-mnKSRwCqA',
   },
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Pig Latin Translator – Free Online Converter with Sound Effects',
-    description: 'Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin instantly.',
+    title: 'Pig Latin Translator – Free Online Converter',
+    description: 'Free online Pig Latin translator. Convert English to Pig Latin instantly.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pig Latin Translator',
-    description: 'Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin instantly.',
+    description: 'Free online Pig Latin translator. Convert English to Pig Latin instantly.',
   },
   robots: 'index, follow',
 }

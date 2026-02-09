@@ -1,22 +1,19 @@
 'use client'
 
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useParams, redirect } from 'next/navigation'
 import Link from 'next/link'
 import { toPigLatin, fromPigLatin, getExamples } from '@/lib/pig-latin'
-import { getPigSoundPlayer, PigSoundPlayer } from '@/lib/pig-sounds'
 import { getTranslations, locales, localeNames, defaultLocale, type Locale } from '@/lib/i18n'
 
 export default function LocalePage() {
   const params = useParams()
   const localeParam = params.locale as string
   
-  // Redirect /en to /
   if (localeParam === 'en') {
     redirect('/')
   }
   
-  // Redirect invalid locales to /
   if (!locales.includes(localeParam as Locale)) {
     redirect('/')
   }
@@ -28,29 +25,10 @@ export default function LocalePage() {
   const [outputText, setOutputText] = useState('')
   const [mode, setMode] = useState<'encode' | 'decode'>('encode')
   const [copied, setCopied] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const pigSoundRef = useRef<PigSoundPlayer | null>(null)
+  const [showExamples, setShowExamples] = useState(false)
 
-  useEffect(() => {
-    pigSoundRef.current = getPigSoundPlayer()
-    return () => {
-      pigSoundRef.current?.stop()
-    }
-  }, [])
+  const examples = getExamples()
 
-  const handleTranslate = useCallback(() => {
-    if (!inputText.trim()) {
-      setOutputText('')
-      return
-    }
-    
-    pigSoundRef.current?.playOink()
-    
-    const result = mode === 'encode' ? toPigLatin(inputText) : fromPigLatin(inputText)
-    setOutputText(result)
-  }, [inputText, mode])
-
-  // Auto-translate on input change
   useEffect(() => {
     if (inputText.trim()) {
       const result = mode === 'encode' ? toPigLatin(inputText) : fromPigLatin(inputText)
@@ -73,34 +51,15 @@ export default function LocalePage() {
     try {
       await navigator.clipboard.writeText(outputText)
       setCopied(true)
-      pigSoundRef.current?.playSnort()
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
       console.error('Failed to copy:', err)
     }
   }
 
-  const playWithOinks = () => {
-    if (!outputText || !pigSoundRef.current) return
-    
-    if (isPlaying) {
-      pigSoundRef.current.stop()
-      setIsPlaying(false)
-    } else {
-      setIsPlaying(true)
-      pigSoundRef.current.speakAsPig(outputText, () => setIsPlaying(false))
-    }
-  }
-
-  const playOinkOnly = () => {
-    pigSoundRef.current?.playCelebration()
-  }
-
   const clearAll = () => {
     setInputText('')
     setOutputText('')
-    pigSoundRef.current?.stop()
-    setIsPlaying(false)
   }
 
   const organizationSchema = {
@@ -135,24 +94,18 @@ export default function LocalePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       
-      <main className="min-h-screen bg-gradient-to-br from-pink-500 via-rose-400 to-red-400">
+      <main className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-violet-700">
         {/* Header */}
         <header className="bg-white/10 backdrop-blur-sm border-b border-white/20">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href={`/${locale}`} className="text-2xl font-bold text-white flex items-center gap-2">
-              <span className="text-3xl">🐷</span>
+              <span className="text-3xl">🔤</span>
               <span>{t.header.title}</span>
             </Link>
             <nav className="flex items-center gap-4">
               <Link href={`/${locale}/blog`} className="text-white/80 hover:text-white transition">
                 Blog
               </Link>
-              <button
-                onClick={playOinkOnly}
-                className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-semibold rounded-full transition flex items-center gap-2"
-              >
-                🔊 {t.translator.oink}
-              </button>
             </nav>
           </div>
         </header>
@@ -160,19 +113,11 @@ export default function LocalePage() {
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-12 text-center">
           <h1 className="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-lg">
-            {t.header.title} 🐷
+            {t.header.title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8">
-            {t.header.subtitle}
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
+            {t.meta.description}
           </p>
-          
-          <div className="flex justify-center gap-4 text-4xl mb-8">
-            <span className="animate-bounce" style={{ animationDelay: '0s' }}>🐷</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>🐖</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>🐽</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.3s' }}>🎵</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.4s' }}>✨</span>
-          </div>
         </section>
 
         {/* Translator Card */}
@@ -183,7 +128,7 @@ export default function LocalePage() {
                 onClick={() => setMode('encode')}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all ${
                   mode === 'encode'
-                    ? 'bg-gradient-to-r from-pink-400 to-rose-400 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -193,7 +138,7 @@ export default function LocalePage() {
                 onClick={() => setMode('decode')}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all ${
                   mode === 'decode'
-                    ? 'bg-gradient-to-r from-pink-400 to-rose-400 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -207,17 +152,11 @@ export default function LocalePage() {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   placeholder={t.translator.inputPlaceholder}
-                  className="w-full h-32 p-4 border-2 border-gray-200 rounded-2xl focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all resize-none text-lg"
+                  className="w-full h-32 p-4 border-2 border-gray-200 rounded-2xl focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 transition-all resize-none text-lg"
                 />
               </div>
 
               <div className="flex flex-wrap justify-center gap-3 mb-6">
-                <button
-                  onClick={handleTranslate}
-                  className="px-8 py-3 bg-gradient-to-r from-pink-400 via-rose-400 to-red-400 text-white font-bold rounded-2xl hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-2"
-                >
-                  🐷 {t.translator.translate}
-                </button>
                 <button
                   onClick={switchMode}
                   className="px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-2xl hover:bg-gray-200 transition flex items-center gap-2"
@@ -230,53 +169,48 @@ export default function LocalePage() {
                 >
                   {t.translator.clear}
                 </button>
+                <button
+                  onClick={() => setShowExamples(!showExamples)}
+                  className="px-6 py-3 bg-indigo-50 text-indigo-600 font-semibold rounded-2xl hover:bg-indigo-100 transition"
+                >
+                  📚 Examples
+                </button>
               </div>
 
-              {outputText && (
-                <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border-2 border-pink-200">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-sm font-semibold text-pink-700">Result:</span>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={playWithOinks}
-                        className={`px-4 py-2 rounded-lg transition flex items-center gap-2 font-semibold ${
-                          isPlaying 
-                            ? 'bg-red-100 text-red-600' 
-                            : 'bg-white hover:bg-pink-100 text-pink-600'
-                        }`}
-                      >
-                        {isPlaying ? (
-                          <>⏹️ {t.translator.stop}</>
-                        ) : (
-                          <>🔊 {t.translator.playWithOinks}</>
-                        )}
-                      </button>
-                      <button
-                        onClick={copyToClipboard}
-                        className="px-4 py-2 bg-white rounded-lg hover:bg-pink-100 transition font-semibold text-pink-600"
-                      >
-                        {copied ? '✓ ' + t.translator.copied : '📋 ' + t.translator.copy}
-                      </button>
-                    </div>
+              {showExamples && (
+                <div className="mb-6 p-4 bg-gray-50 rounded-2xl">
+                  <h3 className="font-semibold text-gray-700 mb-3">Translation Examples:</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    {examples.slice(0, 9).map((ex, i) => (
+                      <div key={i} className="text-sm p-2 bg-white rounded-lg">
+                        <span className="text-gray-500">{ex.english}</span>
+                        <span className="mx-2">→</span>
+                        <span className="text-indigo-600 font-medium">{ex.pigLatin}</span>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-2xl leading-relaxed break-words font-medium text-gray-800">{outputText}</p>
-                  
-                  {isPlaying && (
-                    <div className="mt-4 flex justify-center gap-2 text-3xl">
-                      <span className="animate-bounce">🐷</span>
-                      <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>🎵</span>
-                      <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>🐽</span>
-                      <span className="animate-bounce" style={{ animationDelay: '0.3s' }}>🎶</span>
-                      <span className="animate-bounce" style={{ animationDelay: '0.4s' }}>🐷</span>
-                    </div>
-                  )}
+                </div>
+              )}
+
+              {outputText && (
+                <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 border-2 border-indigo-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-sm font-medium text-indigo-700">Result:</span>
+                    <button
+                      onClick={copyToClipboard}
+                      className="px-4 py-2 bg-white rounded-lg hover:bg-indigo-100 transition font-semibold text-indigo-600"
+                    >
+                      {copied ? '✓ ' + t.translator.copied : '📋 ' + t.translator.copy}
+                    </button>
+                  </div>
+                  <p className="text-xl leading-relaxed break-words font-medium text-gray-800">{outputText}</p>
                 </div>
               )}
             </div>
           </div>
         </section>
 
-        {/* Features, FAQ, etc - abbreviated for locale pages */}
+        {/* FAQ */}
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
@@ -297,7 +231,7 @@ export default function LocalePage() {
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-12">
           <div className="container mx-auto px-4 text-center">
-            <p className="text-2xl mb-4">🐷 {t.header.title}</p>
+            <p className="text-2xl mb-4">🔤 {t.header.title}</p>
             <p className="text-gray-400 mb-6">{t.footer.tagline}</p>
             
             <div className="flex justify-center gap-4 mb-6 flex-wrap">

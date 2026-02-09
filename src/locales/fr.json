@@ -1,36 +1,33 @@
 {
   "hero": {
     "title": "Try the Pig Latin Translator!",
-    "description": "Convert English to Pig Latin instantly with fun oink sounds!"
+    "description": "Convert English to Pig Latin instantly - a classic language game!"
   },
   "meta": {
-    "title": "Pig Latin Translator - Free Online Converter with Sound Effects",
-    "description": "Free Pig Latin translator with fun pig sounds! Convert English to Pig Latin or decode Pig Latin to English instantly. Play your translations with oink effects.",
-    "keywords": "pig latin translator, pig latin converter, english to pig latin, pig latin decoder, pig latin generator, pig latin with sound, free pig latin tool"
+    "title": "Pig Latin Translator - Free Online Converter",
+    "description": "Free online Pig Latin translator. Convert English to Pig Latin or decode Pig Latin to English instantly. A classic language game used for fun and education.",
+    "keywords": "pig latin translator, pig latin converter, english to pig latin, pig latin decoder, pig latin generator, language game, word game, free translator"
   },
   "header": {
     "title": "Pig Latin Translator",
-    "subtitle": "🐷 Anslatetray ouryay exttay!"
+    "subtitle": "Classic Language Game"
   },
   "translator": {
-    "inputPlaceholder": "Type English text here...",
-    "outputPlaceholder": "Pig Latin will appear here...",
+    "inputPlaceholder": "Enter text here...",
+    "outputPlaceholder": "Translation will appear here...",
     "encodeMode": "English → Pig Latin",
     "decodeMode": "Pig Latin → English",
     "translate": "Translate",
     "clear": "Clear",
     "copy": "Copy",
-    "copied": "Copied!",
-    "playWithOinks": "Play with Oinks 🐷",
-    "stop": "Stop",
-    "oink": "Click to Oink!"
+    "copied": "Copied!"
   },
   "rules": {
     "title": "How Pig Latin Works",
     "rule1": {
       "title": "Consonant Words",
       "description": "Move the first consonant cluster to the end and add \"ay\"",
-      "examples": ["hello → ellohay", "string → ingstray", "pig → igpay"]
+      "examples": ["hello → ellohay", "string → ingstray", "world → orldway"]
     },
     "rule2": {
       "title": "Vowel Words",
@@ -44,17 +41,17 @@
     }
   },
   "features": {
-    "title": "Why Our Translator is the Best",
+    "title": "Features",
     "items": [
-      {
-        "icon": "🔊",
-        "title": "Pig Sound Effects!",
-        "description": "Hear your Pig Latin spoken with authentic oink sounds mixed in. It's hilarious!"
-      },
       {
         "icon": "🔄",
         "title": "Two-Way Translation",
         "description": "Convert English to Pig Latin AND decode Pig Latin back to English."
+      },
+      {
+        "icon": "⚡",
+        "title": "Instant Results",
+        "description": "Real-time translation as you type. No waiting, no loading."
       },
       {
         "icon": "✨",
@@ -62,69 +59,69 @@
         "description": "Handles consonant clusters, \"qu\" combinations, and preserves capitalization."
       },
       {
-        "icon": "⚡",
-        "title": "Instant Results",
-        "description": "Translation happens in milliseconds. No waiting, no loading."
-      },
-      {
         "icon": "🎯",
         "title": "Punctuation Safe",
         "description": "Keeps your periods, commas, and exclamation marks exactly where they belong."
       },
       {
+        "icon": "📱",
+        "title": "Works Everywhere",
+        "description": "Use on any device - desktop, tablet, or mobile phone."
+      },
+      {
         "icon": "💯",
         "title": "100% Free",
-        "description": "No sign-up, no limits, no hidden costs. Just pure Pig Latin fun!"
+        "description": "No sign-up, no limits, no hidden costs. Just translate!"
       }
     ]
   },
   "funFacts": {
-    "title": "Fun Facts About Pig Latin",
+    "title": "About Pig Latin",
     "items": [
       {
         "icon": "📜",
-        "title": "Ancient Origins",
-        "description": "Pig Latin dates back to at least the late 1800s in America, though similar language games existed for centuries before."
+        "title": "Historical Origins",
+        "description": "Pig Latin dates back to at least the late 1800s in America, though similar language games existed for centuries before in various cultures."
       },
       {
         "icon": "🌍",
-        "title": "Worldwide Fun",
+        "title": "Similar Games Worldwide",
         "description": "Many languages have their own version! French has \"Verlan,\" Spanish has \"Jerigonza,\" and Swedish has \"Rövarspråket.\""
       },
       {
         "icon": "🎬",
         "title": "Pop Culture",
-        "description": "Pig Latin appears in movies, TV shows, and songs. The Muppets' \"Mahna Mahna\" sounds like Pig Latin!"
+        "description": "Pig Latin appears frequently in movies, TV shows, and literature as a playful way to encode messages."
       },
       {
         "icon": "🧠",
-        "title": "Brain Workout",
-        "description": "Speaking Pig Latin fluently requires quick phonological processing—it's actually a great brain exercise!"
+        "title": "Educational Value",
+        "description": "Speaking Pig Latin helps develop phonological awareness - it's actually a great learning exercise for language skills!"
       }
     ]
   },
   "useCases": {
-    "title": "Erfectpay Orfay... (Perfect For...)",
+    "title": "Perfect For",
     "items": [
       {
-        "icon": "👶",
-        "title": "Kids & Learning",
-        "description": "Make learning language fun! Kids love the silly sounds and it helps with phonics."
+        "icon": "📚",
+        "title": "Education",
+        "description": "Teachers use Pig Latin to help students understand phonics and word structure."
       },
       {
         "icon": "🤫",
-        "title": "Secret Messages",
-        "description": "Send coded messages to friends. It's like having your own secret language!"
+        "title": "Fun Messages",
+        "description": "Send playful coded messages to friends and family."
       },
       {
         "icon": "🎮",
-        "title": "Games & Parties",
-        "description": "Party games, icebreakers, or just goofing around with friends."
+        "title": "Games & Puzzles",
+        "description": "Create word games, puzzles, or party activities."
       },
       {
-        "icon": "📱",
-        "title": "Social Media",
-        "description": "Stand out with unique posts. Confuse your followers in the best way!"
+        "icon": "✍️",
+        "title": "Creative Writing",
+        "description": "Add a unique twist to stories, poems, or social media posts."
       }
     ]
   },
@@ -133,35 +130,28 @@
     "items": [
       {
         "q": "What is Pig Latin?",
-        "a": "Pig Latin is a language game where English words are altered according to simple rules. Move consonants to the end and add \"ay\", or add \"yay\" to vowel words. It's been used for centuries as a fun secret code."
+        "a": "Pig Latin is a language game where English words are altered according to simple rules. It's been used for centuries as a fun way to create playful, coded speech. Despite the name, it has nothing to do with pigs or Latin!"
       },
       {
-        "q": "Why does this translator have pig sounds?",
-        "a": "Because it's Pig Latin! We added synthesized oink sounds to make the experience more fun. Click 'Play with Oinks' to hear your translation with pig sound effects mixed in with the speech."
+        "q": "How do I speak Pig Latin?",
+        "a": "For words starting with consonants, move the consonant(s) to the end and add 'ay'. For words starting with vowels, simply add 'yay' to the end. For example: 'hello' becomes 'ellohay' and 'apple' becomes 'appleyay'."
       },
       {
         "q": "Can I decode Pig Latin back to English?",
         "a": "Yes! Use the 'Pig Latin → English' mode to translate back. Our algorithm reverses the transformation to give you the original text."
       },
       {
-        "q": "Is the Pig Latin translator free?",
-        "a": "Yes, completely free! No sign-up, no limits, no hidden costs. Translate as much as you want and enjoy the oinks!"
+        "q": "Is this translator free?",
+        "a": "Yes, completely free! No sign-up, no limits, no hidden costs. Translate as much as you want."
       },
       {
-        "q": "Does it work with all words?",
-        "a": "It works with most English words. Some very unusual words or names might not translate perfectly, but standard vocabulary works great."
+        "q": "Why is it called Pig Latin?",
+        "a": "The origin of the name is unclear. It may be because the altered words sound like nonsense or 'pig-like' grunting to those unfamiliar with it. The 'Latin' part likely refers to it being a 'secret language' like Latin was to common people."
       }
     ]
   },
-  "cta": {
-    "title": "Ovelay Ouryay Oolstay? (Love Your Tools?)",
-    "description": "Try our other fun translators and tools!",
-    "emojiTranslator": "😊 Emoji Translator",
-    "morseCode": "📡 Morse Code",
-    "wingdings": "🔣 Wingdings"
-  },
   "footer": {
-    "tagline": "Aveahay unfay! (Have fun!)",
+    "tagline": "The classic language game translator",
     "copyright": "© 2025 MrTranslator. All rights reserved.",
     "blog": "Blog",
     "links": {
