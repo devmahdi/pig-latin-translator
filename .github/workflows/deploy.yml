@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push emoji-translator
+        run: |
+          ENV_VARS=$(curl -sf \
+            "${{ vars.DEPLOY_URL }}/api/deploy-env/emoji-translator-emoji-translator" \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_SECRET }}" || echo "")
+          ARGS=()
+          if [ -n "$ENV_VARS" ]; then
+            while IFS= read -r line; do
+              [ -n "$line" ] && ARGS+=("--build-arg" "$line")
+            done <<< "$ENV_VARS"
+          fi
+          docker build "${ARGS[@]}" -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/emoji-translator:latest .
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/emoji-translator:latest
+
+      - name: Deploy to server
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            "${{ vars.DEPLOY_URL }}/api/deploy" \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '${{ vars.SERVICES_CONFIG }}')
+          http_code=$(echo "$response" | tail -1)
+          body=$(echo "$response" | head -n -1)
+          echo "Response: $body"
+          if [ "$http_code" != "200" ]; then
+            echo "Deploy failed with status $http_code"
+            exit 1
+          fi
