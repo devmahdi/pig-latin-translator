@@ -28,7 +28,7 @@ jobs:
       - name: Build and push emoji-translator
         run: |
           ENV_VARS=$(curl -sf \
-            "${{ vars.DEPLOY_URL }}/api/deploy-env/emoji-translator-emoji-translator" \
+            "${{ vars.DEPLOY_URL }}/api/deploy-env/pig-latin-translator-emoji-translator" \
             -H "Authorization: Bearer ${{ secrets.DEPLOY_SECRET }}" || echo "")
           ARGS=()
           if [ -n "$ENV_VARS" ]; then
