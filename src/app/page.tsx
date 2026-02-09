@@ -401,38 +401,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {t.cta.title}
-            </h2>
-            <p className="text-xl text-white/90 mb-8">
-              {t.cta.description}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="https://emoji.mrtranslator.app"
-                className="px-8 py-4 bg-white text-pink-600 font-bold rounded-full hover:shadow-xl transition transform hover:-translate-y-1"
-              >
-                {t.cta.emojiTranslator}
-              </a>
-              <a
-                href="https://morse.mrtranslator.app"
-                className="px-8 py-4 bg-white/20 text-white font-bold rounded-full hover:bg-white/30 transition"
-              >
-                {t.cta.morseCode}
-              </a>
-              <a
-                href="https://wingdings.mrtranslator.app"
-                className="px-8 py-4 bg-white/20 text-white font-bold rounded-full hover:bg-white/30 transition"
-              >
-                {t.cta.wingdings}
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-12">
           <div className="container mx-auto px-4 text-center">
