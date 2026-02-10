@@ -2,4 +2,4 @@ User-agent: *
 Disallow:
 Allow: /
 
-Sitemap: https://emoji.mrtranslator.app/sitemap.xml
+Sitemap: https://piglatin.mrtranslator.app/sitemap.xml
