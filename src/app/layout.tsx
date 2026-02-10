@@ -27,8 +27,11 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Pig Latin Translator – Free Online Converter',
-    description: 'Free online Pig Latin translator. Convert English to Pig Latin instantly.',
+    description: 'Free online Pig Latin translator. Convert English to Pig Latin or decode Pig Latin to English instantly.',
+    url: siteUrl,
+    siteName: 'MrTranslator',
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
